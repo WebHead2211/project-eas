@@ -1,0 +1,21 @@
+#main-container {
+    height: 960px;
+    width: 960px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.div-class {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: aqua;
+    border: 1px solid black;
+    flex-grow: 1;
+    width: auto;
+    height: auto;
+}
+
+.div-class:hover {
+    background-color: black;
+}
