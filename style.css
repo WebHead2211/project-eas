@@ -1,16 +1,25 @@
 body {
     text-align: center;
     overflow: hidden;
+    background-color: #EC4242;
+}
+
+h1 {
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 50px;
+    color: #F8C434;
 }
 
 #main-container {
-    height: 900px;
-    width: 900px;
+    height: 800px;
+    width: 1200px;
     padding: 0;
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    margin: 10px auto 0;
-    border: 1px solid black;
+    margin: -10px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .div-class {
@@ -20,15 +29,31 @@ body {
 .btn {
     background: #fff;
     font-family: Arial;
-    color: #000;
-    font-size: 20px;
+    color: #F8C434;
+    font-family: 'Cedarville Cursive', cursive;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    border: 1px solid black;
+    border: none;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    font-size: 30px;
   }
   
   .btn:hover {
-    background: #000;
+    background: #C13333;
     color: white;
     text-decoration: none;
+  }
+
+  .btn-left {
+    position: absolute;
+    top: 400px;
+    left: 30px;
+  }
+
+  .btn-right {
+    position: absolute;
+    top: 400px;
+    right: 30px;
   }

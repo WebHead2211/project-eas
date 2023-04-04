@@ -9,11 +9,11 @@ const colorButton = document.querySelector('#color-button');
 
 
 //INITIAL GRID SETUP
-for(let i = 0; i < 256; i++){
+for(let i = 0; i < 512; i++){
     const div = document.createElement('div');
     div.classList.add('div-class');
     mainDiv.appendChild(div);
-    div.setAttribute('style', `width:${mainDivWidth/16}px; height:${mainDivHeight/16}px`);
+    div.setAttribute('style', `width:${mainDivHeight/16}px; height:${mainDivHeight/16}px`);
     div.style.backgroundColor = 'white'; 
 } 
 
@@ -77,7 +77,7 @@ function setSize(){
 }
 
 function gridSize(size){
-    let totalNumber = size*size;
+    let totalNumber = size*size*2;
     let boxSize = mainDivHeight/size;
     if(document.querySelector('.div-class')) {
         const divList = document.querySelectorAll('.div-class');

@@ -1,6 +1,6 @@
 # ETCH-A-SKETCH
 
-The page loads with a 16*16 grid.
+The page loads with a 24*16 grid.
 
 When the mouse first moves over the grid, the squares
 take a random color (minimum possible value kept at
@@ -12,7 +12,7 @@ darker until eventually it becomes black.
 # Grid Size Button
 
 Use the button to set a custom grid size.
-Total grid size always remains 900px*900px.
+Total grid size always remains 1200px*800px.
 Size of grid item changes to create a new grid.
 Old grid gets replaced by the new grid.
 
