@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    overflow: hidden;
 }
 
 #main-container {
@@ -8,7 +9,7 @@ body {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    margin: 20px auto;
+    margin: 10px auto 0;
     border: 1px solid black;
 }
 
