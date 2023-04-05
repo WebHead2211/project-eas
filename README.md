@@ -19,3 +19,12 @@ Old grid gets replaced by the new grid.
 # Random Color Button
 
 Use the button to reset the canvas and randomize the color.
+
+# Clear Canvas Button
+
+Clears the canvas but keeps the same color.
+
+# Rainbow Color Button
+
+Generates random color for each square instead of 
+a single color.

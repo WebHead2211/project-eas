@@ -6,6 +6,8 @@ let color = randomColor();
 const safeColor = color;
 const sizeButton = document.querySelector('#size-button');
 const colorButton = document.querySelector('#color-button');
+const clearButton = document.querySelector('#clear-button');
+const rainbowButton = document.querySelector('#rainbow-button');
 
 
 //INITIAL GRID SETUP
@@ -22,14 +24,38 @@ for(let i = 0; i < 512; i++){
 mainDiv.addEventListener('mouseover', gridFunc);
 sizeButton.addEventListener('click', setSize);
 colorButton.addEventListener('click', newColor);
+clearButton.addEventListener('click', clearCanvas);
+rainbowButton.addEventListener('click', rainbowGrid);
+
+
+//FUNCTION TO ADD EVENT LISTENER TO GRID ITEMS
+function gridFunc(){
+    const grid = document.querySelectorAll('.div-class');
+    grid.forEach(div => {
+        if(div.style.backgroundColor === 'white'){
+            div.addEventListener('mouseover', firstPass);
+        } else {
+            div.removeEventListener('mouseover', firstPass);
+            div.addEventListener('mouseover', morePass);
+        }
+    });
+}
+
+function gridFuncRainbow(){
+    const grid = document.querySelectorAll('.div-class');
+    grid.forEach(div => {
+        if(div.style.backgroundColor == 'white'){
+            div.addEventListener('mouseover', firstPassRainbow);
+        } else {
+            div.removeEventListener('mouseover', firstPassRainbow);
+            div.addEventListener('mouseover', morePass);
+        }       
+    });
+}
 
 
 //FUNCTIONS TO ADD COLOR ON FIRST PASS AND SUBSEQUENT PASSES
 function firstPass(){
-    // let color = randomColor();
-    let red = color[0];
-    let green = color[1];
-    let blue = color[2];
     this.style.backgroundColor = `rgb(${color})`;
 }
 
@@ -52,17 +78,11 @@ function morePass(){
 }
 
 
-//FUNCTION TO ADD EVENT LISTENER TO GRID ITEMS
-function gridFunc(){
+//FUNCTION FOR RAINBOW FIRST PASS
+function firstPassRainbow(){
+    let newRandomColor = randomRainbowColor();
     const grid = document.querySelectorAll('.div-class');
-    grid.forEach(div => {
-        if(div.style.backgroundColor === 'white'){
-            div.addEventListener('mouseover', firstPass);
-        } else {
-            div.removeEventListener('mouseover', firstPass);
-            div.addEventListener('mouseover', morePass);
-        }
-    });
+    this.style.backgroundColor = `rgb(${newRandomColor})`;     
 }
 
 
@@ -72,12 +92,12 @@ function setSize(){
     if(size>0 && size<=100){
         gridSize(size);
     } else {
-        window.alert("Please choose a valid value!");
+        window.alert("Please choose a value from 1 to 100!");
     }   
 }
 
 function gridSize(size){
-    let totalNumber = size*size*2;
+    let totalNumber = size*size;
     let boxSize = mainDivHeight/size;
     if(document.querySelector('.div-class')) {
         const divList = document.querySelectorAll('.div-class');
@@ -97,7 +117,12 @@ function gridSize(size){
 function newColor(){
     color = randomColor();
     const divList = document.querySelectorAll('.div-class');
-    divList.forEach(div => div.style.backgroundColor = 'white');
+    divList.forEach(div => {
+        div.style.backgroundColor = 'white';
+        div.removeEventListener('mouseover', firstPassRainbow);
+    });
+    mainDiv.removeEventListener('mouseover', gridFuncRainbow);
+    mainDiv.addEventListener('mouseover', gridFunc);
 }
 
 function randomColor(){
@@ -106,6 +131,39 @@ function randomColor(){
     let blue = Math.floor((Math.random() * 55)+200);
     let color = [red, green, blue];
     return color;
+}
+
+function randomRainbowColor(){
+    let red = Math.floor((Math.random() * 256));
+    let green = Math.floor((Math.random() * 256));
+    let blue = Math.floor((Math.random() * 256));
+    let color = [red, green, blue];
+    return color;
+}
+
+
+//FUNCTION TO CLEAR THE CANVAS
+function clearCanvas(){
+    const grid = document.querySelectorAll('.div-class')
+    grid.forEach(div => {
+        div.style.backgroundColor = 'white';
+        div.removeEventListener('mouseover', firstPassRainbow);
+    });
+    mainDiv.removeEventListener('mouseover', gridFuncRainbow);
+    mainDiv.addEventListener('mouseover', gridFunc);  
+}
+
+
+//RAINBOW GRID FUNCTION
+function rainbowGrid(){
+    mainDiv.removeEventListener('mouseover', gridFunc);
+    mainDiv.addEventListener('mouseover', gridFuncRainbow);
+    const grid = document.querySelectorAll('.div-class');
+    grid.forEach(div => {
+        div.style.backgroundColor = 'white';
+        div.removeEventListener('mouseover', firstPass);
+        div.removeEventListener('mouseover', morePass);
+    });
 }
 
 
